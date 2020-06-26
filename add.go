@@ -1,18 +1,19 @@
 package main
 import(
-	"fmt"
 	"io"
+	"fmt"
+	"os"
 	"net/http"
 )
 func main(){
-fmt.Println("hello")
-fmt.Println(add(4,8))
-port := os.Getenv("PORT")
-http.HandleFunc("/",add)
-http.ListenAndServe(":"+port, nil)
+	port := os.Getenv("PORT")
+	http.HandleFunc("/",add)
+	http.ListenAndServe(":"+port, nil)
 }
-func add(x int, y int) int{
+func add(w http.ResponseWriter, r *http.Request){
+	x , y := 6,100
 	z := 0
 	z = x + y
-	return z
+	fmt.Println(z)
+	io.WriteString(w, "Hello World!")
 }
