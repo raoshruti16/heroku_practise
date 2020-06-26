@@ -1,9 +1,9 @@
 package main
 import(
 	"io"
-	"fmt"
 	"os"
 	"net/http"
+	"strconv"
 )
 func main(){
 	port := os.Getenv("PORT")
@@ -14,6 +14,7 @@ func add(w http.ResponseWriter, r *http.Request){
 	x , y := 6,100
 	z := 0
 	z = x + y
-	io.WriteString(fmt.Sprintf("%d\n", z))
+	s2 := strconv.Itoa(z)
+	io.WriteString(w, s2)
 	io.WriteString(w, "Hello World!")
 }
