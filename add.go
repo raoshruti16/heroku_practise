@@ -14,6 +14,6 @@ func add(w http.ResponseWriter, r *http.Request){
 	x , y := 6,100
 	z := 0
 	z = x + y
-	fmt.Fprintf(z)
+	io.WriteString(fmt.Sprintf("%d\n", z))
 	io.WriteString(w, "Hello World!")
 }
