@@ -19,5 +19,4 @@ func hi(w http.ResponseWriter, r *http.Request){
 	s1 := add(4,8)
 	s2 := strconv.Itoa(s1)
 	io.WriteString(w, s2)
-	io.WriteString(w, "Hello World!")
 }
