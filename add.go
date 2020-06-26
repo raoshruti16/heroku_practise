@@ -7,14 +7,17 @@ import(
 )
 func main(){
 	port := os.Getenv("PORT")
-	http.HandleFunc("/",add)
+	http.HandleFunc("/",hi)
 	http.ListenAndServe(":"+port, nil)
 }
-func add(w http.ResponseWriter, r *http.Request){
-	x , y := 6,100
+func add(x int , y int)int{
 	z := 0
 	z = x + y
-	s2 := strconv.Itoa(z)
+	return z
+}
+func hi(w http.ResponseWriter, r *http.Request){
+	s1 := add(4,8)
+	s2 := strconv.Itoa(s1)
 	io.WriteString(w, s2)
 	io.WriteString(w, "Hello World!")
 }
